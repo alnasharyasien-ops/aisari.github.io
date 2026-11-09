@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0b0912">
+<meta name="description" content="Tools Hub - أدوات مجانية وسهلة للصور والملفات والنصوص والحسابات.">
+<title>Tools Hub — أدواتك في مكان واحد</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<style>
+:root{--bg:#0b0912;--panel:#151220;--panel2:#1c1729;--line:#302641;--text:#f6f2ff;--muted:#aaa0ba;--purple:#9b6cff;--purple2:#6e42d8;--green:#5dd6a0;--red:#ff7777}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 80% -15%,#38205c 0,transparent 36%),var(--bg);color:var(--text);font-family:system-ui,-apple-system,"Segoe UI",sans-serif;min-height:100vh}
+button,input,textarea,select{font:inherit}button{cursor:pointer}
+.wrap{max-width:1100px;margin:auto;padding:22px}
+header{display:flex;align-items:center;justify-content:space-between;gap:15px;padding:10px 0 28px}
+.brand{display:flex;align-items:center;gap:11px;font-weight:850;font-size:23px;letter-spacing:-.5px}.logo{width:42px;height:42px;border-radius:14px;background:linear-gradient(135deg,#b68aff,#713de0);display:grid;place-items:center;box-shadow:0 8px 28px #8e59ff55;font-size:22px}
+.lang{background:var(--panel);border:1px solid var(--line);color:var(--text);border-radius:12px;padding:9px 13px}
+.hero{text-align:center;padding:35px 10px 28px}.eyebrow{color:#c2a5ff;font-size:13px;font-weight:700;letter-spacing:1px}.hero h1{font-size:clamp(32px,6vw,54px);line-height:1.12;margin:13px 0}.grad{background:linear-gradient(90deg,#d3baff,#9464ff,#e2cfff);-webkit-background-clip:text;background-clip:text;color:transparent}.hero p{color:var(--muted);max-width:590px;margin:0 auto 22px;line-height:1.8}
+.search{max-width:510px;margin:auto;position:relative}.search input{width:100%;background:#171222;border:1px solid var(--line);border-radius:15px;padding:14px 17px;color:var(--text);outline:none}.search input:focus,.field input:focus,.field textarea:focus{border-color:var(--purple)}
+.section-head{display:flex;justify-content:space-between;align-items:center;margin:24px 0 14px}.section-head h2{font-size:19px;margin:0}.hint{color:var(--muted);font-size:12px}
+.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:13px}.tool-card{background:linear-gradient(145deg,#191426,#120f1b);border:1px solid var(--line);border-radius:18px;padding:17px;text-align:right;color:var(--text);transition:.2s;min-height:140px}.tool-card:hover{transform:translateY(-3px);border-color:#8d65d7;background:#201831}.tool-icon{width:43px;height:43px;border-radius:13px;background:#302044;display:grid;place-items:center;font-size:22px;margin-bottom:13px}.tool-card strong{display:block;font-size:15px;margin-bottom:5px}.tool-card small{color:var(--muted);line-height:1.5}
+.workspace{margin-top:22px;background:var(--panel);border:1px solid var(--line);border-radius:22px;padding:22px;display:none}.workspace.active{display:block}.work-top{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:18px}.work-top h2{margin:0;font-size:21px}.close{background:var(--panel2);color:var(--text);border:1px solid var(--line);border-radius:10px;padding:8px 12px}
+.tool-pane{display:none}.tool-pane.active{display:block}.field{margin:13px 0}.field label{display:block;color:#d8cfea;font-size:13px;margin-bottom:7px}.field input,.field textarea{width:100%;background:#0f0c17;border:1px solid var(--line);border-radius:12px;padding:12px;color:var(--text);outline:none}.field textarea{min-height:125px;resize:vertical}
+.row{display:flex;gap:10px;flex-wrap:wrap}.row>*{flex:1;min-width:130px}.btn{border:0;border-radius:12px;padding:11px 17px;background:linear-gradient(135deg,#a77aff,#7044d7);color:white;font-weight:750}.btn.secondary{background:#2a2238;border:1px solid var(--line);color:var(--text)}.btn:disabled{opacity:.5;cursor:not-allowed}
+.result{margin-top:14px;padding:13px;border:1px solid var(--line);background:#100d18;border-radius:12px;color:var(--muted);line-height:1.7;overflow-wrap:anywhere}.result strong{color:var(--green)}.qrbox{background:#fff;border-radius:12px;display:inline-block;padding:12px;margin-top:12px;min-height:20px}.qrbox img,.qrbox canvas{display:block}
+.drop{border:1px dashed #7655a8;border-radius:15px;padding:25px;text-align:center;color:var(--muted);background:#110e19}.drop input{max-width:100%;margin-top:12px}.preview{max-width:100%;max-height:240px;border-radius:12px;margin-top:12px}
+.stats{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}.stat{background:#211a2e;border-radius:10px;padding:9px 12px;color:#d8c9f5;font-size:13px}
+footer{text-align:center;color:#756c85;font-size:12px;padding:30px 0 12px;line-height:1.8}
+.hidden{display:none!important}
+@media(max-width:760px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.wrap{padding:15px}.hero{padding-top:24px}.tool-card{min-height:130px;padding:14px}.workspace{padding:16px}}
+@media(max-width:360px){.grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+ <div class="brand"><div class="logo">✦</div><span>Tools <span class="grad">Hub</span></span></div>
+ <button class="lang" id="langBtn" type="button">English</button>
+</header>
+<section class="hero">
+ <div class="eyebrow" data-ar="أدوات بسيطة. وقت أقل. إنجاز أكثر." data-en="SIMPLE TOOLS. LESS TIME. MORE DONE.">أدوات بسيطة. وقت أقل. إنجاز أكثر.</div>
+ <h1 data-ar="كل أدواتك في <span class='grad'>مكان واحد</span>" data-en="All your tools in <span class='grad'>one place</span>">كل أدواتك في <span class="grad">مكان واحد</span></h1>
+ <p data-ar="أدوات مجانية وسهلة تساعدك في الصور والنصوص والحسابات. بدون تعقيد، ومن موبايلك أو الكمبيوتر." data-en="Free, easy tools for images, text and calculations. No fuss — use them on your phone or computer.">أدوات مجانية وسهلة تساعدك في الصور والنصوص والحسابات. بدون تعقيد، ومن موبايلك أو الكمبيوتر.</p>
+ <div class="search"><input id="search" type="search" placeholder="ابحث عن أداة..." aria-label="Search tools"></div>
+</section>
+<div class="section-head"><h2 data-ar="اكتشف الأدوات" data-en="Explore tools">اكتشف الأدوات</h2><span class="hint" data-ar="4 أدوات متاحة الآن" data-en="4 tools available">4 أدوات متاحة الآن</span></div>
+<div class="grid" id="toolGrid">
+ <button class="tool-card" data-tool="qr"><span class="tool-icon">▦</span><strong data-ar="منشئ QR Code" data-en="QR Code Generator">منشئ QR Code</strong><small data-ar="حوّل أي رابط أو نص إلى رمز QR." data-en="Turn any link or text into a QR code.">حوّل أي رابط أو نص إلى رمز QR.</small></button>
+ <button class="tool-card" data-tool="image"><span class="tool-icon">▧</span><strong data-ar="ضغط الصور" data-en="Image Compressor">ضغط الصور</strong><small data-ar="قلّل حجم الصورة واحفظ نسخة أخف." data-en="Reduce image size and save a lighter copy.">قلّل حجم الصورة واحفظ نسخة أخف.</small></button>
+ <button class="tool-card" data-tool="loan"><span class="tool-icon">＄</span><strong data-ar="حاسبة القروض" data-en="Loan Calculator">حاسبة القروض</strong><small data-ar="احسب القسط الشهري والتكلفة التقديرية." data-en="Estimate monthly payments and total cost.">احسب القسط الشهري والتكلفة التقديرية.</small></button>
+ <button class="tool-card" data-tool="text"><span class="tool-icon">¶</span><strong data-ar="أدوات النصوص" data-en="Text Tools">أدوات النصوص</strong><small data-ar="احسب الكلمات والحروف ونظّم النص." data-en="Count words and characters, clean text.">احسب الكلمات والحروف ونظّم النص.</small></button>
+</div>
+<section class="workspace" id="workspace">
+ <div class="work-top"><h2 id="workTitle">الأداة</h2><button class="close" id="closeBtn" type="button" data-ar="إغلاق ×" data-en="Close ×">إغلاق ×</button></div>
+ <div class="tool-pane" id="pane-qr">
+  <div class="field"><label data-ar="اكتب رابطًا أو نصًا" data-en="Enter a link or text">اكتب رابطًا أو نصًا</label><input id="qrText" type="text" placeholder="https://example.com" dir="auto"></div>
+  <button class="btn" id="makeQr" data-ar="إنشاء QR Code" data-en="Generate QR Code">إنشاء QR Code</button>
+  <div id="qrResult" class="result hidden"></div>
+  <div id="qrOutput" class="qrbox hidden"></div>
+  <p class="hint" data-ar="ملاحظة: تحتاج الأداة إلى اتصال بالإنترنت لتحميل مكتبة إنشاء QR." data-en="Note: An internet connection is needed to load the QR library.">ملاحظة: تحتاج الأداة إلى اتصال بالإنترنت لتحميل مكتبة إنشاء QR.</p>
+ </div>
+ <div class="tool-pane" id="pane-image">
+  <div class="drop"><div data-ar="اختر صورة من جهازك" data-en="Choose an image from your device">اختر صورة من جهازك</div><input type="file" id="imageFile" accept="image/*"></div>
+  <div class="field"><label data-ar="جودة الصورة (الأقل = حجم أصغر)" data-en="Image quality (lower = smaller file)">جودة الصورة (الأقل = حجم أصغر)</label><input type="range" id="quality" min="20" max="95" value="75"></div>
+  <button class="btn" id="compressBtn" disabled data-ar="ضغط الصورة" data-en="Compress image">ضغط الصورة</button>
+  <div id="imageResult" class="result hidden"></div><img id="imagePreview" class="preview hidden" alt="Compressed image preview">
+  <a id="downloadImage" class="btn hidden" style="display:inline-block;text-decoration:none;margin-top:10px" download="tools-hub-compressed.jpg" data-ar="تحميل الصورة" data-en="Download image">تحميل الصورة</a>
+  <p class="hint" data-ar="الصورة تتم معالجتها داخل متصفحك ولا تُرفع إلى خادم." data-en="Your image is processed in your browser and is not uploaded to a server.">الصورة تتم معالجتها داخل متصفحك ولا تُرفع إلى خادم.</p>
+ </div>
+ <div class="tool-pane" id="pane-loan">
+  <div class="row">
+   <div class="field"><label data-ar="مبلغ القرض" data-en="Loan amount">مبلغ القرض</label><input id="loanAmount" type="number" min="1" placeholder="100000"></div>
+   <div class="field"><label data-ar="الفائدة السنوية (%)" data-en="Annual interest (%)">الفائدة السنوية (%)</label><input id="loanRate" type="number" min="0" step="0.01" placeholder="15"></div>
+   <div class="field"><label data-ar="المدة بالسنوات" data-en="Term in years">المدة بالسنوات</label><input id="loanYears" type="number" min="1" max="50" placeholder="5"></div>
+  </div>
+  <button class="btn" id="calcLoan" data-ar="احسب القسط" data-en="Calculate payment">احسب القسط</button>
+  <div id="loanResult" class="result hidden"></div>
+  <p class="hint" data-ar="حساب تقديري بافتراض فائدة ثابتة وأقساط شهرية متساوية. لا يشمل الرسوم أو التأمين أو شروط البنك." data-en="Estimate assumes a fixed rate and equal monthly payments. Fees, insurance and lender terms are not included.">حساب تقديري بافتراض فائدة ثابتة وأقساط شهرية متساوية. لا يشمل الرسوم أو التأمين أو شروط البنك.</p>
+ </div>
+ <div class="tool-pane" id="pane-text">
+  <div class="field"><label data-ar="اكتب أو الصق النص هنا" data-en="Type or paste your text">اكتب أو الصق النص هنا</label><textarea id="textInput" placeholder="اكتب النص هنا..." dir="auto"></textarea></div>
+  <div class="stats" id="textStats"><span class="stat">الكلمات: 0</span><span class="stat">الحروف: 0</span><span class="stat">بدون مسافات: 0</span></div>
+  <div class="row" style="margin-top:13px"><button class="btn secondary" id="trimText" data-ar="تنظيف المسافات" data-en="Clean spaces">تنظيف المسافات</button><button class="btn secondary" id="copyText" data-ar="نسخ النص" data-en="Copy text">نسخ النص</button><button class="btn secondary" id="clearText" data-ar="مسح" data-en="Clear">مسح</button></div>
+ </div>
+</section>
+<footer>© <span id="year"></span> Tools Hub · <span data-ar="أدوات مجانية وسهلة للجميع" data-en="Free and simple tools for everyone">أدوات مجانية وسهلة للجميع</span><br><span data-ar="نسخة تجريبية أولى — نرحب بملاحظاتك." data-en="First beta version — feedback is welcome.">نسخة تجريبية أولى — نرحب بملاحظاتك.</span></footer>
+</div>
+<script>
+const $=id=>document.getElementById(id);
+let lang='ar', currentTool=null, selectedImage=null;
+const titles={qr:{ar:'منشئ QR Code',en:'QR Code Generator'},image:{ar:'ضغط الصور',en:'Image Compressor'},loan:{ar:'حاسبة القروض',en:'Loan Calculator'},text:{ar:'أدوات النصوص',en:'Text Tools'}};
+function setLang(next){lang=next;document.documentElement.lang=lang;document.documentElement.dir=lang==='ar'?'rtl':'ltr';$('langBtn').textContent=lang==='ar'?'English':'العربية';document.querySelectorAll('[data-ar]').forEach(el=>{el.innerHTML=el.dataset[lang]});$('search').placeholder=lang==='ar'?'ابحث عن أداة...':'Search tools...';if(currentTool)$('workTitle').textContent=titles[currentTool][lang];updateTextStats()}
+$('langBtn').addEventListener('click',()=>setLang(lang==='ar'?'en':'ar'));
+document.querySelectorAll('[data-tool]').forEach(card=>card.addEventListener('click',()=>openTool(card.dataset.tool)));
+function openTool(tool){currentTool=tool;$('workspace').classList.add('active');document.querySelectorAll('.tool-pane').forEach(p=>p.classList.remove('active'));$('pane-'+tool).classList.add('active');$('workTitle').textContent=titles[tool][lang];$('workspace').scrollIntoView({behavior:'smooth',block:'start'})}
+function closeTool(){$('workspace').classList.remove('active');currentTool=null}
+$('closeBtn').addEventListener('click',closeTool);
+$('search').addEventListener('input',e=>{const q=e.target.value.toLowerCase();document.querySelectorAll('[data-tool]').forEach(card=>{card.style.display=card.innerText.toLowerCase().includes(q)||card.textContent.toLowerCase().includes(q)?'':'none'})});
+$('makeQr').addEventListener('click',()=>{const value=$('qrText').value.trim(),out=$('qrOutput'),res=$('qrResult');out.innerHTML='';out.classList.add('hidden');res.classList.remove('hidden');if(!value){res.textContent=lang==='ar'?'اكتب رابطًا أو نصًا أولًا.':'Please enter a link or text first.';return}if(typeof QRCode==='undefined'){res.textContent=lang==='ar'?'تعذر تحميل مكتبة QR. تحقق من اتصال الإنترنت ثم أعد تحميل الصفحة.':'Could not load the QR library. Check your internet connection and reload.';return}new QRCode(out,{text:value,width:220,height:220,colorDark:'#171020',colorLight:'#ffffff',correctLevel:QRCode.CorrectLevel.M});out.classList.remove('hidden');res.textContent=lang==='ar'?'تم إنشاء الرمز. اضغط مطولًا على الصورة لحفظها على الهاتف.':'QR code created. Long-press the image to save it on your phone.'});
+$('imageFile').addEventListener('change',e=>{selectedImage=e.target.files[0]||null;$('compressBtn').disabled=!selectedImage;$('imageResult').classList.add('hidden');$('imagePreview').classList.add('hidden');$('downloadImage').classList.add('hidden')});
+$('compressBtn').addEventListener('click',()=>{if(!selectedImage)return;if(!selectedImage.type.startsWith('image/'))return;const reader=new FileReader();reader.onload=()=>{const img=new Image();img.onload=()=>{const max=2400,scale=Math.min(1,max/Math.max(img.width,img.height)),canvas=document.createElement('canvas');canvas.width=Math.round(img.width*scale);canvas.height=Math.round(img.height*scale);canvas.getContext('2d').drawImage(img,0,0,canvas.width,canvas.height);canvas.toBlob(blob=>{if(!blob)return;const url=URL.createObjectURL(blob);$('imagePreview').src=url;$('imagePreview').classList.remove('hidden');$('downloadImage').href=url;$('downloadImage').classList.remove('hidden');const before=(selectedImage.size/1024).toFixed(1),after=(blob.size/1024).toFixed(1),saved=Math.max(0,(1-blob.size/selectedImage.size)*100).toFixed(1);$('imageResult').classList.remove('hidden');$('imageResult').innerHTML=(lang==='ar'?`الحجم الأصلي: <strong>${before} KB</strong><br>الحجم بعد الضغط: <strong>${after} KB</strong><br>التوفير التقريبي: <strong>${saved}%</strong>`:`Original size: <strong>${before} KB</strong><br>Compressed size: <strong>${after} KB</strong><br>Approx. reduction: <strong>${saved}%</strong>`);},'image/jpeg',Number($('quality').value)/100)};img.src=reader.result};reader.readAsDataURL(selectedImage)});
+$('calcLoan').addEventListener('click',()=>{const p=Number($('loanAmount').value),annual=Number($('loanRate').value),years=Number($('loanYears').value),res=$('loanResult');res.classList.remove('hidden');if(!(p>0)||annual<0||!(years>0)||years>50){res.textContent=lang==='ar'?'أدخل مبلغًا ومدة صحيحين، وفائدة لا تقل عن صفر.':'Enter a valid amount and term, and a non-negative interest rate.';return}const n=years*12,r=annual/1200,payment=r===0?p/n:p*r/(1-Math.pow(1+r,-n)),total=payment*n,fmt=x=>new Intl.NumberFormat(lang==='ar'?'ar-EG':'en-US',{maximumFractionDigits:2}).format(x);res.innerHTML=lang==='ar'?`القسط الشهري التقريبي: <strong>${fmt(payment)}</strong><br>إجمالي المدفوعات: <strong>${fmt(total)}</strong><br>إجمالي الفائدة: <strong>${fmt(total-p)}</strong>`:`Estimated monthly payment: <strong>${fmt(payment)}</strong><br>Total payments: <strong>${fmt(total)}</strong><br>Total interest: <strong>${fmt(total-p)}</strong>`});
+function updateTextStats(){const t=$('textInput').value,words=t.trim()?t.trim().split(/\s+/u).length:0,chars=[...t].length,noSpace=[...t.replace(/\s/g,'')].length;$('textStats').innerHTML=lang==='ar'?`<span class="stat">الكلمات: ${words}</span><span class="stat">الحروف: ${chars}</span><span class="stat">بدون مسافات: ${noSpace}</span>`:`<span class="stat">Words: ${words}</span><span class="stat">Characters: ${chars}</span><span class="stat">No spaces: ${noSpace}</span>`}
+$('textInput').addEventListener('input',updateTextStats);
+$('trimText').addEventListener('click',()=>{$('textInput').value=$('textInput').value.replace(/[ \t]+/g,' ').replace(/\n{3,}/g,'\n\n').trim();updateTextStats()});
+$('copyText').addEventListener('click',async()=>{try{await navigator.clipboard.writeText($('textInput').value);$('copyText').textContent=lang==='ar'?'تم النسخ ✓':'Copied ✓';setTimeout(()=>{$('copyText').textContent=lang==='ar'?'نسخ النص':'Copy text'},1400)}catch(e){$('textInput').select();document.execCommand('copy')}});
+$('clearText').addEventListener('click',()=>{$('textInput').value='';updateTextStats()});
+$('year').textContent=new Date().getFullYear();
+</script>
+</body>
+</html>
